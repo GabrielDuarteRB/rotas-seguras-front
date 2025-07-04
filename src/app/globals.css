@@ -3,6 +3,14 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  --color-primary: #00C7BD;
+  --color-secondary: #2B3333;
+  --color-terciary: #1E1E1E70;
+
+  --color-success: #52c41a;
+  --color-warning: #faad14;
+  --color-erro: #ff4d4f;
 }
 
 @theme inline {
@@ -20,7 +28,46 @@
 }
 
 body {
-  background: var(--background);
+  background: var( --color-secondary);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.image-background {
+  background-image: url('../assets/img/logo.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 1190px;
+  opacity: 0.2;
+  position: absolute;
+  right: -18%;
+  top: 33%;
+  width: 900px;
+  z-index: 49;
+}
+
+.texto-principal {
+  color: var(--color-primary);
+}
+
+.container {
+  padding: 36px
+}
+
+
+@media (max-width: 992px) {
+  .image-background {
+    right: -36%;
+    top: 40%;
+  }
+}
+
+@media (max-width: 768px) {
+  .image-background {
+    right: -50%;
+    top: 50%;
+  }
+
 }
