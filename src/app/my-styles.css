@@ -1,0 +1,62 @@
+
+.image-background {
+  background-image: url('../assets/img/logo.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 1190px;
+  opacity: 0.2;
+  position: absolute;
+  right: -18%;
+  top: 33%;
+  width: 900px;
+  z-index: 49;
+}
+
+.text-primary {
+  color: var(--color-primary);
+}
+.text-secondary {
+  color: var(--color-secondary);
+}
+
+.text-error {
+  color: var(--color-erro);
+}
+.text-success {
+  color: var(--color-success);
+}
+.text-warning {
+  color: var(--color-warning);
+}
+
+.container {
+  padding: 36px
+}
+
+.border-terciary {
+  border-color: var(--color-terciary);
+}
+
+.bg-primary {
+  background-color: var(--color-primary);
+}
+
+.bg-primary-90 {
+  background-color: rgba(0, 199, 189, 0.9);
+}
+
+.bg-error-10 {
+  background-color: rgba(255, 77, 79, 0.1);
+}
+
+.text-terciary {
+  color: var(--color-terciary);
+}
+
+.hover\:text-primary-80:hover {
+  color: rgba(0, 199, 189, 0.8);
+}
+
+.focus\:ring-primary:focus {
+  --tw-ring-color: var(--color-primary);
+}

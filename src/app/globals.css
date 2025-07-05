@@ -1,7 +1,8 @@
 @import "tailwindcss";
+@import "./my-styles.css";
 
 :root {
-  --background: #ffffff;
+  --background: #f4f4f4;
   --foreground: #171717;
 
   --color-primary: #00C7BD;
@@ -22,8 +23,16 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #f4f4f4;
+    --foreground: #171717;
+
+    --color-primary: #00C7BD;
+    --color-secondary: #2B3333;
+    --color-terciary: #1E1E1E70;
+
+    --color-success: #52c41a;
+    --color-warning: #faad14;
+    --color-erro: #ff4d4f;
   }
 }
 
@@ -35,26 +44,6 @@ body {
   overflow-y: hidden;
 }
 
-.image-background {
-  background-image: url('../assets/img/logo.png');
-  background-repeat: no-repeat;
-  background-position: center;
-  height: 1190px;
-  opacity: 0.2;
-  position: absolute;
-  right: -18%;
-  top: 33%;
-  width: 900px;
-  z-index: 49;
-}
-
-.texto-principal {
-  color: var(--color-primary);
-}
-
-.container {
-  padding: 36px
-}
 
 
 @media (max-width: 992px) {
