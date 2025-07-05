@@ -1,36 +1,76 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📦 Projeto Rotas Seguras
 
-## Getting Started
+Aplicação web desenvolvida como parte da disciplina de Desenvolvimento Web no CEFET/RJ. O projeto tem como objetivo criar uma solução para auxiliar na segurança urbana do Rio de Janeiro.
 
-First, run the development server:
+A aplicação conta com:
+
+- 💻 Front-end desenvolvido em **Next.js**, aproveitando seus recursos para criação de componentes e uso do TypeScript.
+- 🚀 Back-end desenvolvido em **NestJS**.
+- 🗄️ Banco de dados **PostgreSQL**.
+
+---
+
+## 🔗 Repositórios
+
+- [Rotas Seguras Front-end](https://github.com/GabrielDuarteRB/rotas-seguras-front)
+- [Rotas Seguras Back-end](https://github.com/GabrielDuarteRB/rotas-seguras)
+- [Gerenciamento de Usuários](https://github.com/CainaZumaa/controle-users/tree/dev)
+
+> ⚠️ **Importante:** Para configurar o back-end e o sistema de gerenciamento de usuários, leia os respectivos READMEs nos repositórios indicados.
+
+---
+
+## ⚙️ Como rodar o projeto
+
+### Pré-requisitos
+
+- Git
+- Node.js (versão recomendada: 16 ou superior)
+- npm ou yarn
+
+---
+
+### Passos para executar o front-end
+
+1. Clone o repositório:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+  git clone https://github.com/GabrielDuarteRB/rotas-seguras-front.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Instale as dependencias do projeto
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+  npm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 3. Configure o .env
 
-## Learn More
+Crie um `.env` na raiz do projeto e configure algumas variáveis.
 
-To learn more about Next.js, take a look at the following resources:
+Essa parte ainda nao eh necessario 
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```env
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 4. Executar o projeto
 
-## Deploy on Vercel
+```bash
+  npm run dev
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+> Após a execução, o projeto ira subir na porta 8000, sendo possivel acessa-lo em [localhost:8000](http://localhost:8000) no navegador
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 🚀 Tecnologias Utilizadas
+
+- Next Js - Framework baseado no React
+- TypeScript - Linguagem fortemente tipada
+
+👨‍💻 Autores
+
+- Gabriel Duarte
+- Mauro Felippe
+- Nicollas Leal
+- Yago Avila
