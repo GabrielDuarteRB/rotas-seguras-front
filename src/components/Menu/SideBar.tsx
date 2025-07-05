@@ -1,10 +1,11 @@
 "use client";
 
-import { useState } from "react";
-import { FaUser, FaVideo, FaShareAlt, FaBars, FaTimes } from "react-icons/fa";
+import { useState, useContext } from "react";
+import { FaUser, FaVideo, FaShareAlt, FaBars, FaTimes, FaSignOutAlt } from "react-icons/fa";
 import Link from 'next/link'
 import Image from "next/image";
 import logo from "@/assets/img/logo.png";
+import { AuthContext } from '@/context/AuthContext';
 
 const navItems = [
   { id: 1, label: "nav 1", href: '/', icon: <FaUser /> },
@@ -15,6 +16,12 @@ const navItems = [
 export default function MenuSideBar() {
   const [isOpen, setIsOpen] = useState(true);
   const [activeId, setActiveId] = useState(1);
+
+  const authContext = useContext(AuthContext);
+
+  if(!authContext) return null
+
+  const { logout } = authContext
 
   return (
       <nav
@@ -33,9 +40,9 @@ export default function MenuSideBar() {
           {
           isOpen
           ?
-            <FaTimes className="transition-transform duration-1200" />
+            <FaTimes className="transition-transform duration-1200 text-primary" />
           :
-            <FaBars className="transition-transform duration-1200" />
+            <FaBars className="transition-transform duration-1200 text-primary" />
           }
         </button>
 
@@ -46,19 +53,33 @@ export default function MenuSideBar() {
             <li key={id}>
               <Link
                 href={href}
-                className={`texto-principal flex items-center cursor-pointer px-4 py-2 rounded-r-md
+                className={`text-primary flex items-center cursor-pointer px-4 py-2 rounded-r-md
                   ${
                     activeId === id
                       ? "bg-blue-600 font-semibold"
                       : "hover:bg-gray-700"
                   }`}
               >
-                <span className="text-lg texto-principal">{icon}</span>
+                <span className="text-lg text-primary">{icon}</span>
                 {isOpen && <span className="ml-3">{label}</span>}
               </Link>
             </li>
           ))}
+
+          <li
+            onClick={logout}
+            className={`text-primary flex items-center cursor-pointer px-4 py-2 rounded-r-md hover:bg-gray-700
+              ${isOpen ? "justify-start" : "justify-center"}`}
+          >
+            <FaSignOutAlt className="text-lg text-primary" />
+            {isOpen && (
+              <span className="ml-3">
+                Sair
+              </span>
+            )}
+          </li>
         </ul>
+
 
       </nav>
   );
