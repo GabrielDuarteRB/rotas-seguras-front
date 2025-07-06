@@ -38,7 +38,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       setLoading(true)
       const { usuario, token }: { usuario: UserInterface; token: string } = await UserService.login(email, password)
       localStorage.setItem('authToken', token)
-      localStorage.setItem('id', usuario.id)
       setUser(usuario)
       router.push('/civil')
     } catch (error) {
@@ -52,13 +51,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const me = async () => {
     try {
       setLoading(true)
-      const id = localStorage.getItem('id')
-      if(id) {
-        const user: UserInterface = await UserService.getUserByToken(id)
-        setUser(user)
-      } else {
-        redirectToLogin()
-      }
+      const {user} : {user: UserInterface} = await UserService.getUserByToken()
+      setUser(user)
     } catch (error) {
       console.log('Invalid failed:', error)
       redirectToLogin()
@@ -87,7 +81,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const redirectToLogin = () => {
     localStorage.removeItem('authToken')
-    localStorage.removeItem('id')
     setUser(null)
     router.push('/login')
   }

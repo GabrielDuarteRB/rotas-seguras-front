@@ -18,8 +18,8 @@ class UserService {
     }
   }
 
-  async getUserByToken (id: string) {
-    const response = await userApi(`/usuarios/${id}`);
+  async getUserByToken () {
+    const response = await userApi(`/auth/validate`, 'POST');
 
     if (!response.ok) {
       throw new Error('Token inválido');
