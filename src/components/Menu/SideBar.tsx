@@ -1,21 +1,22 @@
 "use client";
 
 import { useState, useContext } from "react";
-import { FaUser, FaVideo, FaShareAlt, FaBars, FaTimes, FaSignOutAlt } from "react-icons/fa";
+import { FaExclamationTriangle , FaHome, FaShareAlt, FaBars, FaTimes, FaSignOutAlt } from "react-icons/fa";
+import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import Image from "next/image";
 import logo from "@/assets/img/logo.png";
 import { AuthContext } from '@/context/AuthContext';
 
 const navItems = [
-  { id: 1, label: "nav 1", href: '/', icon: <FaUser /> },
-  { id: 2, label: "nav 2", href: '/', icon: <FaVideo /> },
+  { id: 1, label: "Home", href: '/civil', icon: <FaHome  /> },
+  { id: 2, label: "Ocorrencias", href: '/civil/ocorrencia', icon: <FaExclamationTriangle  /> },
   { id: 3, label: "nav 3", href: '/', icon: <FaShareAlt /> },
 ];
 
 export default function MenuSideBar() {
   const [isOpen, setIsOpen] = useState(true);
-  const [activeId, setActiveId] = useState(1);
+  const pathname = usePathname()
 
   const authContext = useContext(AuthContext);
 
@@ -25,7 +26,7 @@ export default function MenuSideBar() {
 
   return (
       <nav
-        className={`flex flex-col h-screen z-50 transition-width duration-300  ${
+        className={`flex flex-col h-screen z-5 transition-width duration-300  ${
           isOpen ? "w-75" : "w-16"
         }`}
         style={{ background: "var(--color-terciary)" }}
@@ -49,22 +50,24 @@ export default function MenuSideBar() {
         <Image src={logo} alt="Logo"  height={isOpen ? 100 : 40}  className={ 'mx-auto' } />
 
         <ul className="flex flex-col mt-4 space-y-1">
-          {navItems.map(({ id, label, icon, href }) => (
-            <li key={id}>
-              <Link
-                href={href}
-                className={`text-primary flex items-center cursor-pointer px-4 py-2 rounded-r-md
-                  ${
-                    activeId === id
-                      ? "bg-blue-600 font-semibold"
-                      : "hover:bg-gray-700"
-                  }`}
-              >
-                <span className="text-lg text-primary">{icon}</span>
-                {isOpen && <span className="ml-3">{label}</span>}
-              </Link>
-            </li>
-          ))}
+          {navItems.map(({ id, label, icon, href }) => {
+            const isActive = pathname === href
+
+            return (
+              <li key={id}>
+                <Link
+                  href={href}
+                  className={`text-primary flex items-center px-4 py-2 rounded-r-md
+                    ${isActive ? "bg-blue-600 font-semibold" : "hover:bg-gray-700"}
+                    ${!isOpen ? "justify-center" : ""}
+                  `}
+                >
+                  <span className="text-lg">{icon}</span>
+                  {isOpen && <span className="ml-3">{label}</span>}
+                </Link>
+              </li>
+            )
+          })}
 
           <li
             onClick={logout}
