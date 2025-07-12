@@ -1,6 +1,7 @@
 import MenuSideBar from '@/components/Menu/SideBar'
 import { AuthProvider } from '@/context/AuthContext';
 import { OcorrenciaProvider } from '@/context/OcorrenciaContext';
+import { PostoProvider } from '@/context/PostoContext';
 import '../globals.css'
 
 export default function PrivateLayout({
@@ -13,6 +14,7 @@ export default function PrivateLayout({
       <body className="flex">
         <AuthProvider>
           <OcorrenciaProvider>
+            <PostoProvider>
             <MenuSideBar />
             <div className="image-wrapper">
               <span className="image-background"></span>
@@ -20,6 +22,7 @@ export default function PrivateLayout({
                 {children}
               </div>
             </div>
+            </PostoProvider>
           </OcorrenciaProvider>
         </AuthProvider>
       </body>
