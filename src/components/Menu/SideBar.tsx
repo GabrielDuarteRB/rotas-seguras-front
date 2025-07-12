@@ -17,7 +17,7 @@ const navOptions = {
   admin: [
     { id: 1, label: "Home", href: '/admin', icon: <FaHome  /> },
     { id: 2, label: "Ocorrencias", href: '/admin/ocorrencia', icon: <FaExclamationTriangle  /> },
-    { id: 3, label: "Viaturas", href: '/policial/viaturas', icon: <FaCarSide /> },
+    { id: 3, label: "Viaturas", href: '/admin/viaturas', icon: <FaCarSide /> },
   ],
   policial: [
     { id: 1, label: "Home", href: '/policial', icon: <FaHome  /> },
