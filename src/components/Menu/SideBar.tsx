@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useContext } from "react";
-import { FaExclamationTriangle , FaHome, FaShareAlt, FaBars, FaTimes, FaSignOutAlt } from "react-icons/fa";
+import { FaExclamationTriangle , FaHome, FaShareAlt, FaBars, FaTimes, FaSignOutAlt, FaCarSide } from "react-icons/fa";
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import Image from "next/image";
@@ -12,6 +12,7 @@ const navOptions = {
   civil:[
     { id: 1, label: "Home", href: '/civil', icon: <FaHome  /> },
     { id: 2, label: "Ocorrencias", href: '/civil/ocorrencia', icon: <FaExclamationTriangle  /> },
+    { id: 3, label: "Viaturas", href: '/civil/viaturas', icon: <FaCarSide /> },
   ],
   admin: [
     { id: 1, label: "Ocorrencias", href: '/admin/ocorrencia', icon: <FaExclamationTriangle  /> },

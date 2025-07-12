@@ -13,7 +13,7 @@ export async function policeApi<T>(
   method: HttpMethod = 'GET',
   body?: unknown,
   options: HttpOptions = {}
-) {
+  ) {
   const url = `${BASE_URL}${endpoint}`;
   const headers: HeadersInit = {
     'Content-Type': 'application/json',
