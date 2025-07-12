@@ -52,7 +52,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     try {
       setLoading(true)
       const {user} : {user: UserInterface} = await UserService.getUserByToken()
-      setUser(user)
+      const userLogged  = await UserService.getUserById(user.id)
+      setUser(userLogged)
     } catch (error) {
       console.log('Invalid failed:', error)
       redirectToLogin()

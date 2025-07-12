@@ -4,7 +4,7 @@ import type { OcorrenciaCreateInterface } from '@/interface/Ocorrencia/Ocorrenci
 
 class OcorrenciaService {
 
-  async getAll(dados: OcorrenciaGetAllInterface) {
+  async getAll(dados: OcorrenciaGetAllInterface = {}) {
 
     const params = new URLSearchParams(dados as any).toString();
     try {
@@ -12,6 +12,10 @@ class OcorrenciaService {
         `/ocorrencias?${params}`,
         'GET',
       );
+
+      if (!response.ok) {
+        throw new Error('Erro ao buscar as ocorrencias');
+      }
 
       return await response.json();
     } catch (error: any) {
@@ -27,9 +31,31 @@ class OcorrenciaService {
         dados
       );
 
+      if (!response.ok) {
+        throw new Error('Erro ao criar ocorrencia');
+      }
+
       return await response.json();
     } catch (error: any) {
       throw new Error(error.message || 'Falha ao criar as ocorrencias');
+    }
+  }
+
+  async update(id: number, dados: Partial<OcorrenciaCreateInterface>) {
+    try {
+      const response = await policeApi(
+        `/ocorrencias/${id}`,
+        'PUT',
+        dados
+      );
+
+      if (!response.ok) {
+        throw new Error('Ocorrencia  não atualizada');
+      }
+
+      return await response.json();
+    } catch (error: any) {
+      throw new Error(error.message || 'Falha ao atualizar a ocorrencia');
     }
   }
 

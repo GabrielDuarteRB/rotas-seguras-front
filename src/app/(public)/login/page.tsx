@@ -21,10 +21,10 @@ export default function LoginPage() {
       return
     }
 
-    if(authContext) {
-      await authContext.login(email, password)
-    } else {
-      setError('Tente novamente mais tarde')
+    try {
+      await authContext?.login(email, password)
+    } catch (err: any) {
+      setError('Login ou senha invalidos')
     }
   }
 

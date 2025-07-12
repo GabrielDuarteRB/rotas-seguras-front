@@ -23,7 +23,7 @@ export function ModalCreateOcorrencia({ isOpen, onClose, id_pessoa }: ModalProps
 
   if(!ocorrenciaContext) return null
 
-  const { createcorrencias } = ocorrenciaContext
+  const { createOcorrencias } = ocorrenciaContext
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault()
@@ -55,7 +55,7 @@ export function ModalCreateOcorrencia({ isOpen, onClose, id_pessoa }: ModalProps
 
     try {
       setError('')
-      createcorrencias(obj)
+      createOcorrencias(obj)
       console.log('Enviando ocorrência:', mensagem)
 
       setMensagem('')

@@ -1,4 +1,10 @@
 
+.image-wrapper {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
 .image-background {
   background-image: url('../assets/img/logo.png');
   background-repeat: no-repeat;
@@ -31,6 +37,16 @@
 }
 .text-warning {
   color: var(--color-warning);
+}
+
+.background-error {
+  background-color: var(--color-erro);
+}
+.background-success {
+  background-color: var(--color-success);
+}
+.background-warning {
+  background-color: var(--color-warning);
 }
 
 .container {
@@ -67,4 +83,10 @@
 
 .focus\:ring-primary:focus {
   --tw-ring-color: var(--color-primary);
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0px;
+  }
 }

@@ -12,6 +12,10 @@ class UserService {
         { redirectOnUnauthorized: false }
       );
 
+      if (!response.ok) {
+        throw new Error('Erro ao fazer login');
+      }
+
       return await response.json();
     } catch (error: any) {
       throw new Error(error.message || 'Falha no login');
@@ -37,10 +41,24 @@ class UserService {
         { redirectOnUnauthorized: false }
       );
 
+      if (!response.ok) {
+        throw new Error('Erro ao criar usuário');
+      }
+
       return await response.json();
     } catch (error: any) {
       throw new Error(error.message || 'Falha no login');
     }
+  }
+
+  async getUserById (id: string) {
+    const response = await userApi(`/usuarios/${id}`, 'GET');
+
+    if (!response.ok) {
+      throw new Error('Usuário não encontrado');
+    }
+
+    return await response.json();
   }
 }
 

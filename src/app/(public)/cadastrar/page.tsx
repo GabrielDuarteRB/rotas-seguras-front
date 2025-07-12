@@ -40,7 +40,8 @@ export default function RegisterPage() {
       setPassword('')
       setConfirmPassword('')
     } catch (err) {
-      setError('Erro ao criar conta. Tente novamente mais tarde.')
+      setError('Erro ao criar conta. Verifique os dados e tente novamente.')
+      console.error('Erro ao criar conta:', err)
     }
   }
 

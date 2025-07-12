@@ -8,15 +8,21 @@ import Image from "next/image";
 import logo from "@/assets/img/logo.png";
 import { AuthContext } from '@/context/AuthContext';
 
-const navItems = [
-  { id: 1, label: "Home", href: '/civil', icon: <FaHome  /> },
-  { id: 2, label: "Ocorrencias", href: '/civil/ocorrencia', icon: <FaExclamationTriangle  /> },
-  { id: 3, label: "nav 3", href: '/', icon: <FaShareAlt /> },
-];
+const navOptions = {
+  civil:[
+    { id: 1, label: "Home", href: '/civil', icon: <FaHome  /> },
+    { id: 2, label: "Ocorrencias", href: '/civil/ocorrencia', icon: <FaExclamationTriangle  /> },
+  ],
+  admin: [
+    { id: 1, label: "Ocorrencias", href: '/admin/ocorrencia', icon: <FaExclamationTriangle  /> },
+  ]
+};
 
 export default function MenuSideBar() {
   const [isOpen, setIsOpen] = useState(true);
   const pathname = usePathname()
+  const type = pathname.split('/')[1] as keyof typeof navOptions;
+  const navItems = navOptions[type] || [];
 
   const authContext = useContext(AuthContext);
 
