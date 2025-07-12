@@ -14,9 +14,11 @@ export default function PrivateLayout({
         <AuthProvider>
           <OcorrenciaProvider>
             <MenuSideBar />
-            <span className="image-background"></span>
-            <div className="container">
-              {children}
+            <div className="image-wrapper">
+              <span className="image-background"></span>
+              <div className="container">
+                {children}
+              </div>
             </div>
           </OcorrenciaProvider>
         </AuthProvider>
