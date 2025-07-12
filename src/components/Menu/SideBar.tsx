@@ -12,6 +12,7 @@ const navOptions = {
   civil:[
     { id: 1, label: "Home", href: '/civil', icon: <FaHome  /> },
     { id: 2, label: "Ocorrencias", href: '/civil/ocorrencia', icon: <FaExclamationTriangle  /> },
+    { id: 3, label: "Posto de guarda", href: '/civil/posto', icon: <FaShareAlt  /> },
   ],
   admin: [
     { id: 1, label: "Ocorrencias", href: '/admin/ocorrencia', icon: <FaExclamationTriangle  /> },
