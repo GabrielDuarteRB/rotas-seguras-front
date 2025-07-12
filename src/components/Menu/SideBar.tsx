@@ -12,10 +12,16 @@ const navOptions = {
   civil:[
     { id: 1, label: "Home", href: '/civil', icon: <FaHome  /> },
     { id: 2, label: "Ocorrencias", href: '/civil/ocorrencia', icon: <FaExclamationTriangle  /> },
-    { id: 3, label: "Viaturas", href: '/civil/viaturas', icon: <FaCarSide /> },
   ],
   admin: [
-    { id: 1, label: "Ocorrencias", href: '/admin/ocorrencia', icon: <FaExclamationTriangle  /> },
+    { id: 1, label: "Home", href: '/admin', icon: <FaHome  /> },
+    { id: 2, label: "Ocorrencias", href: '/admin/ocorrencia', icon: <FaExclamationTriangle  /> },
+    { id: 3, label: "Viaturas", href: '/policial/viaturas', icon: <FaCarSide /> },
+  ],
+  policial: [
+    { id: 1, label: "Home", href: '/policial', icon: <FaHome  /> },
+    { id: 2, label: "Ocorrencias", href: '/policial/ocorrencia', icon: <FaExclamationTriangle  /> },
+    { id: 3, label: "Viaturas", href: '/policial/viaturas', icon: <FaCarSide /> },
   ]
 };
 
