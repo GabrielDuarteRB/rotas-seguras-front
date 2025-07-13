@@ -1,32 +1,56 @@
 "use client";
 
 import { MapContainer, TileLayer, Marker, useMapEvents, Popup } from "react-leaflet";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import "leaflet/dist/leaflet.css";
 import { fixLeafletIcons, postoIconSVG } from "@/utils/leaflet-icons";
 
 interface Posto {
-  id: number;
+  id_rota: number;
   latitude: number;
   longitude: number;
   id_policial_viatura: number;
+  iniciada_em: string;
+  finalizada_em: string;
 }
 
 export default function MapaCriarPostoComCallback({
   onSelectPosition,
   postos = [],
+  onCentralizarPosto,
 }: {
   onSelectPosition: (pos: { lat: number; lng: number }) => void;
   postos?: Posto[];
+  onCentralizarPosto?: (posto: Posto) => void;
 }) {
   const [markerPos, setMarkerPos] = useState<[number, number] | null>(null);
   const [mapReady, setMapReady] = useState(false);
+  const [mapCenter, setMapCenter] = useState<[number, number]>([-22.88, -43.25]);
+  const mapRef = useRef<L.Map | null>(null);
 
   useEffect(() => {
-    // Fix dos ícones quando o componente montar
+    
     fixLeafletIcons();
     setMapReady(true);
   }, []);
+
+  
+  const centralizarNoPosto = (posto: Posto) => {
+    const novaPosicao: [number, number] = [posto.latitude, posto.longitude];
+    setMapCenter(novaPosicao);
+    
+    if (mapRef.current) {
+      mapRef.current.setView(novaPosicao, 15);
+    }
+  };
+
+  
+  useEffect(() => {
+    if (onCentralizarPosto) {
+      
+      (window as any).centralizarNoPosto = centralizarNoPosto;
+    }
+  }, [onCentralizarPosto]);
 
   function LocationMarker() {
     useMapEvents({
@@ -55,9 +79,10 @@ export default function MapaCriarPostoComCallback({
 
   return (
     <MapContainer
-      center={[-22.88, -43.25]}
+      center={mapCenter}
       zoom={13}
       style={{ height: "400px", width: "100%" }}
+      ref={mapRef}
     >
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
       <LocationMarker />
@@ -65,7 +90,7 @@ export default function MapaCriarPostoComCallback({
       {/* Marcadores dos postos existentes */}
       {postos.map((posto) => (
         <Marker
-          key={posto.id}
+          key={posto.id_rota}
           position={[posto.latitude, posto.longitude]}
           icon={postoIconSVG}
         >
@@ -73,7 +98,7 @@ export default function MapaCriarPostoComCallback({
             <div className="p-2">
               <div className="flex items-center gap-2 mb-2">
                 <span className="text-2xl">🏢</span>
-                <strong className="text-lg text-primary">Posto #{posto.id}</strong>
+                <strong className="text-lg text-primary">Posto #{posto.id_rota}</strong>
               </div>
               <div className="space-y-1 text-sm">
                 <div className="flex items-center gap-1">

@@ -84,11 +84,11 @@ export default function MapaPostoPage() {
 
       alert("Posto criado com sucesso!");
       
-      // Recarregar a lista de postos
+      
       const novosPostos = await PostoService.getAll();
       setPostos(novosPostos);
       
-      // Limpar os campos após sucesso
+      
       setIdPolicialViatura(null);
       setPosicao(null);
     } catch (error) {
@@ -118,6 +118,27 @@ export default function MapaPostoPage() {
 
   const formatarData = (data: string) => {
     return new Date(data).toLocaleString('pt-BR');
+  };
+
+  const excluirPosto = async (id: number) => {
+    if (!confirm("Deseja excluir este posto? Esta ação não pode ser desfeita.")) return;
+    
+    try {
+      await PostoService.delete(id);
+      const novosPostos = await PostoService.getAll();
+      setPostos(novosPostos);
+      alert("Posto excluído com sucesso!");
+    } catch (error) {
+      console.error("Erro ao excluir posto:", error);
+      alert("Erro ao excluir posto. Verifique o console para mais detalhes.");
+    }
+  };
+
+  const centralizarNoMapa = (posto: PostoInterface) => {
+    
+    if ((window as any).centralizarNoPosto) {
+      (window as any).centralizarNoPosto(posto);
+    }
   };
 
   return (
@@ -195,7 +216,11 @@ export default function MapaPostoPage() {
               Clique no mapa para marcar o posto
             </h3>
             <div className="border border-gray-600 rounded-lg overflow-hidden shadow-lg">
-              <Mapa onSelectPosition={(pos) => setPosicao(pos)} postos={postos} />
+              <Mapa 
+                onSelectPosition={(pos) => setPosicao(pos)} 
+                postos={postos}
+                onCentralizarPosto={centralizarNoMapa}
+              />
             </div>
           </div>
         </div>
@@ -235,20 +260,24 @@ export default function MapaPostoPage() {
                     <th className="px-3 py-2 md:px-6 md:py-4">Coordenadas</th>
                     <th className="px-3 py-2 md:px-6 md:py-4">Iniciada em</th>
                     <th className="px-3 py-2 md:px-6 md:py-4">Finalizada em</th>
+                    <th className="px-3 py-2 md:px-6 md:py-4 text-center">Ações</th>
                   </tr>
                 </thead>
                 <tbody>
                   {postos.map((posto, index) => (
                     <tr
-                      key={posto.id}
-                      className="border-t border-gray-700 hover:bg-zinc-700 transition-colors"
+                      key={posto.id_rota}
+                      className="border-t border-gray-700 hover:bg-zinc-700 transition-colors cursor-pointer group"
+                      onClick={() => centralizarNoMapa(posto)}
+                      title="Clique para centralizar no mapa"
                     >
-                      <td className="px-3 py-2 md:px-6 md:py-3 text-white font-mono">
-                        #{posto.id}
+                      <td className="px-3 py-2 md:px-6 md:py-3 text-white font-mono group-hover:text-primary transition-colors">
+                        #{posto.id_rota}
                       </td>
                       <td className="px-3 py-2 md:px-6 md:py-3 text-white">
-                        <span className="text-primary font-medium">
+                        <span className="text-primary font-medium flex items-center gap-2">
                           {getInfoPolicialViatura(posto.id_policial_viatura)}
+                          <span className="text-xs opacity-0 group-hover:opacity-100 transition-opacity">📍</span>
                         </span>
                       </td>
                       <td className="px-3 py-2 md:px-6 md:py-3 text-white">
@@ -262,6 +291,17 @@ export default function MapaPostoPage() {
                       </td>
                       <td className="px-3 py-2 md:px-6 md:py-3 text-white">
                         {formatarData(posto.finalizada_em)}
+                      </td>
+                      <td className="px-3 py-2 md:px-6 md:py-3 text-center">
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation(); 
+                            excluirPosto(posto.id_rota);
+                          }}
+                          className="text-error hover:text-error/80 transition-colors font-medium px-3 py-1 cursor-pointer rounded-lg hover:bg-error/10"
+                        >
+                          🗑️ Excluir
+                        </button>
                       </td>
                     </tr>
                   ))}

@@ -1,5 +1,5 @@
 export interface PostoInterface {
-  id: number;
+  id_rota: number;
   id_policial_viatura: number;
   latitude: number;
   longitude: number;
