@@ -25,13 +25,13 @@ export default function ViaturaListPage() {
 
   return (
     <div className="container">
-      {/* Header */}
+      
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-primary mb-2">Viaturas</h1>
         <p className="text-secondary text-lg">Visualize as viaturas disponíveis</p>
       </div>
 
-      {/* Lista de Viaturas */}
+      
       <div className="rounded-xl border border-gray-700 p-6 hover-lift card-gradient">
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-xl font-semibold text-white flex items-center gap-2">

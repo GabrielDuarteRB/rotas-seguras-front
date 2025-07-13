@@ -143,13 +143,13 @@ export default function MapaPostoPage() {
 
   return (
     <div className="container">
-      {/* Header */}
+      
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-primary mb-2">Gerenciamento de Postos</h1>
         <p className="text-secondary text-lg">Cadastre e visualize postos de policiamento no mapa</p>
       </div>
 
-      {/* Card de Criação */}
+      
       <div className="rounded-xl border border-gray-700 p-6 mb-8 hover-lift card-gradient">
         <h2 className="text-xl font-semibold text-white mb-6 flex items-center gap-2">
           <span className="w-2 h-6 bg-primary rounded-full"></span>
@@ -157,7 +157,7 @@ export default function MapaPostoPage() {
         </h2>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {/* Formulário */}
+          
           <div className="space-y-4">
             <div>
               <label className="block text-white font-medium mb-2">Policial + Viatura:</label>
@@ -209,7 +209,7 @@ export default function MapaPostoPage() {
             </button>
           </div>
 
-          {/* Mapa */}
+          
           <div>
             <h3 className="text-white font-medium mb-3 flex items-center gap-2">
               <span>🗺️</span>
@@ -226,7 +226,7 @@ export default function MapaPostoPage() {
         </div>
       </div>
 
-      {/* Lista de Postos Existentes */}
+      
       <div className="rounded-xl border border-gray-700 p-6 hover-lift card-gradient">
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-xl font-semibold text-white flex items-center gap-2">

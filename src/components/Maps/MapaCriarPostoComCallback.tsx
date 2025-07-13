@@ -87,7 +87,7 @@ export default function MapaCriarPostoComCallback({
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
       <LocationMarker />
       
-      {/* Marcadores dos postos existentes */}
+      
       {postos.map((posto) => (
         <Marker
           key={posto.id_rota}

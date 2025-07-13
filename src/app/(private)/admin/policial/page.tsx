@@ -90,13 +90,13 @@ export default function AdminPoliciaisPage() {
 
   return (
     <div className="container">
-      {/* Header */}
+      
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-primary mb-2">Gerenciamento de Policiais</h1>
         <p className="text-secondary text-lg">Cadastre e gerencie os policiais da corporação</p>
       </div>
 
-      {/* Card de Criação */}
+      
       <div className="rounded-xl border border-gray-700 p-6 mb-8 hover-lift card-gradient">
         <h2 className="text-xl font-semibold text-white mb-6 flex items-center gap-2">
           <span className="w-2 h-6 bg-primary rounded-full"></span>
@@ -148,7 +148,7 @@ export default function AdminPoliciaisPage() {
         </form>
       </div>
 
-      {/* Filtros */}
+      
       <div className="rounded-xl border border-gray-700 p-6 mb-8 hover-lift card-gradient">
         <h2 className="text-xl font-semibold text-white mb-6 flex items-center gap-2">
           <span className="w-2 h-6 bg-primary rounded-full"></span>
@@ -197,7 +197,7 @@ export default function AdminPoliciaisPage() {
         </div>
       </div>
 
-      {/* Lista de Policiais */}
+      
       <div className="rounded-xl border border-gray-700 p-6 hover-lift card-gradient">
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-xl font-semibold text-white flex items-center gap-2">
