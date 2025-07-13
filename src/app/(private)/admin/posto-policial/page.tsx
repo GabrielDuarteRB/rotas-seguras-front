@@ -68,6 +68,7 @@ export default function AdminPostoPolicialPage() {
     <div className="bg-gray-900 text-white p-8 rounded-xl shadow-xl max-w-4xl mx-auto">
       <h1 className="text-3xl font-bold mb-8 text-center">Gerenciar Postos Policiais</h1>
 
+
       <form
         onSubmit={handleSubmit}
         className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10 items-end"
@@ -89,6 +90,7 @@ export default function AdminPostoPolicialPage() {
           {editandoId ? 'Atualizar' : 'Cadastrar'}
         </button>
       </form>
+
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
         <div className="flex flex-col md:col-span-2">
@@ -115,6 +117,7 @@ export default function AdminPostoPolicialPage() {
           </button>
         </div>
       </div>
+
 
       <div className="overflow-x-auto">
         <table className="w-full border-collapse text-sm text-center rounded overflow-hidden">
