@@ -9,11 +9,7 @@ import { AuthContext } from '@/context/AuthContext'
 import { OcorrenciaContext } from '@/context/OcorrenciaContext'
 import { OcorrenciaInterface } from '@/interface/Ocorrencia/OcorrenciaInterface'
 
-export default function PrivateAdminOcorrencia({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function PrivateAdminOcorrencia() {
   const authContext = useContext(AuthContext)
   const ocorrenciaContext = useContext(OcorrenciaContext)
 

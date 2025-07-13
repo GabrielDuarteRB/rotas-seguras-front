@@ -7,11 +7,7 @@ import { ModalCreateOcorrencia } from '@/components/Modal/CreateOcorrencia'
 import { AuthContext } from '@/context/AuthContext'
 import { OcorrenciaContext } from '@/context/OcorrenciaContext'
 
-export default function PrivateCivilOcorrencia({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function PrivateCivilOcorrencia() {
   const authContext = useContext(AuthContext)
   const ocorrenciaContext = useContext(OcorrenciaContext)
   const [modalOpen, setModalOpen] = useState(false)
