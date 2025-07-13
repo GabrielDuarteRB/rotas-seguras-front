@@ -18,7 +18,7 @@ export default function PrivateCivil({
   return (
     <div>
       <h1 className="text-primary text-2xl font-bold">Bem vindo a rotas seguras, {user?.nome}!</h1>
-        <div className="flex mt-16 gap-x-8 justify-center">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-16 justify-items-center">
         <CardOption
           title="Ocorrencias"
           paragraph="Caso tenha acontecido algo com voce, crie uma ocorrencia para podermos ajudar o mais rapido possivel"
