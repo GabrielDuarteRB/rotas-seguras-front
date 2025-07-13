@@ -25,6 +25,12 @@ export default function PrivateCivil({
           buttonText="Ocorrencias"
           buttonLink="/civil/ocorrencia"
         />
+        <CardOption
+          title="Policiais"
+          paragraph="Veja uma lista de todos os policiais, ativos ou não ativos."
+          buttonText="Policiais"
+          buttonLink="/civil/policial"
+        />
       </div>
     </div>
   )
