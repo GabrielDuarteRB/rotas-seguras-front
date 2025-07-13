@@ -16,6 +16,8 @@ const navOptions = {
     { id: 1, label: "Home", href: '/civil', icon: <FaHome  /> },
     { id: 2, label: "Ocorrencias", href: '/civil/ocorrencia', icon: <FaExclamationTriangle  /> },
     { id: 3, label: "Posto de guarda", href: '/civil/posto', icon: <FaShareAlt  /> },
+    { id: 4, label: "Policial", href: '/civil/policial', icon: <FaEye/>},
+    { id: 5, label: "Posto Policial", href: '/civil/posto-policial', icon: <FaArtstation/>}
   ],
   admin: [
     { id: 1, label: "Home", href: '/admin', icon: <FaHome  /> },
@@ -31,6 +33,8 @@ const navOptions = {
     { id: 1, label: "Home", href: '/policial', icon: <FaHome  /> },
     { id: 2, label: "Ocorrencias", href: '/policial/ocorrencia', icon: <FaExclamationTriangle  /> },
     { id: 3, label: "Viaturas", href: '/policial/viaturas', icon: <FaCarSide /> },
+    { id: 4, label: "Policial", href: '/policial/policial', icon: <FaEye/>},
+    { id: 5, label: "Posto Policial", href: '/policial/posto-policial', icon: <FaArtstation/>}
   ]
 };
 
