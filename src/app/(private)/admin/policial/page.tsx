@@ -139,7 +139,6 @@ export default function AdminPoliciaisPage() {
         </button>
       </form>
 
-      {/* FILTROS */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
         <div className="flex flex-col">
           <label className="mb-1 text-sm font-medium text-white">Filtrar por Posto</label>
@@ -181,7 +180,6 @@ export default function AdminPoliciaisPage() {
         </div>
       </div>
 
-      {/* TABELA */}
       <div className="overflow-x-auto">
         <table className="w-full border-collapse text-sm text-center rounded overflow-hidden">
           <thead className="bg-gray-800 text-white uppercase">
