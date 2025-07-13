@@ -1,64 +1,56 @@
-import { policeApi } from "@/utils/police-api"
-import type { PolicialGetAllInterface } from '@/interface/Policial/PolicialGetAllInterface'
-import type { PolicialCreateInterface } from '@/interface/Policial/PolicialCreateInterface'
+import { PolicialInterface } from "@/interface/Policial/PolicialInterface";
+import { policeApi } from "@/utils/police-api";
 
-class PolicialService {
+const endpoint = "/policial";
 
-  async getAll(dados: PolicialGetAllInterface = {}) {
+const PolicialService = {
+  getAll: async (): Promise<PolicialInterface[]> => {
+    const response = await policeApi(endpoint, "GET");
+    return response.json();
+  },
 
-    const params = new URLSearchParams(dados as any).toString();
-    try {
-      const response = await policeApi(
-        `/policiais?${params}`,
-        'GET',
-      );
+  getById: async (id: number): Promise<PolicialInterface> => {
+    const response = await policeApi(`${endpoint}/${id}`, "GET");
+    return response.json();
+  },
 
-      if (!response.ok) {
-        throw new Error('Erro ao buscar as policiais');
-      }
+  findByPosto: async (idPosto: string): Promise<PolicialInterface[]> => {
+    const response = await policeApi(`${endpoint}/posto/${idPosto}`, "GET");
+    return response.json();
+  },
 
-      return await response.json();
-    } catch (error: any) {
-      throw new Error(error.message || 'Falha ao buscar as policiais');
-    }
-  }
+  getPoliciaisAtivos: async (): Promise<any> => {
+    const response = await policeApi(`${endpoint}/ativos`, "GET");
+    return response.json();
+  },
 
-  async create(dados: PolicialCreateInterface) {
-    try {
-      const response = await policeApi(
-        `/policiais`,
-        'POST',
-        dados
-      );
+  create: async (policial: Omit<PolicialInterface, "id_policial">): Promise<PolicialInterface> => {
+    const response = await policeApi(endpoint, "POST", policial);
+    return response.json();
+  },
 
-      if (!response.ok) {
-        throw new Error('Erro ao criar policial');
-      }
+  update: async (id: number, policial: Partial<PolicialInterface>): Promise<PolicialInterface> => {
+    const response = await policeApi(`${endpoint}/${id}`, "PUT", policial);
+    return response.json();
+  },
 
-      return await response.json();
-    } catch (error: any) {
-      throw new Error(error.message || 'Falha ao criar o policial');
-    }
-  }
+  updatePartial: async (id: number, policialId: number): Promise<PolicialInterface> => {
+    const response = await policeApi(`${endpoint}/${id}`, "PATCH", {
+      id_policial: policialId
+    });
+    return response.json();
+  },
 
-  async update(id: number, dados: Partial<PolicialCreateInterface>) {
-    try {
-      const response = await policeApi(
-        `/policiais/${id}`,
-        'PUT',
-        dados
-      );
+  addPostoPolicial: async (id: number, policialId: number): Promise<PolicialInterface> => {
+    const response = await policeApi(`${endpoint}${id}/posto/${id}`, "PATCH", {
+      id_policial: policialId
+    });
+    return response.json();
+  },
 
-      if (!response.ok) {
-        throw new Error('Policial não atualizado');
-      }
+  delete: async (id: number): Promise<void> => {
+    await policeApi(`${endpoint}/${id}`, "DELETE");
+  },
+};
 
-      return await response.json();
-    } catch (error: any) {
-      throw new Error(error.message || 'Falha ao atualizar o policial');
-    }
-  }
-
-}
-
-export default new PolicialService();
+export default PolicialService;
