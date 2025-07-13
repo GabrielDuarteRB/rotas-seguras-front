@@ -132,13 +132,13 @@ export default function PolicialViaturaPage() {
 
   return (
     <div className="container">
-      {/* Header */}
+      
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-primary mb-2">Gerenciamento de Associações</h1>
         <p className="text-secondary text-lg">Associe policiais a viaturas para patrulhamento</p>
       </div>
 
-      {/* Card de Criação */}
+      
       <div className="rounded-xl border border-gray-700 p-6 mb-8 hover-lift card-gradient">
         <h2 className="text-xl font-semibold text-white mb-6 flex items-center gap-2">
           <span className="w-2 h-6 bg-primary rounded-full"></span>
@@ -207,7 +207,7 @@ export default function PolicialViaturaPage() {
         </div>
       </div>
 
-      {/* Lista de Associações Existentes */}
+      
       <div className="rounded-xl border border-gray-700 p-6 hover-lift card-gradient">
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-xl font-semibold text-white flex items-center gap-2">
