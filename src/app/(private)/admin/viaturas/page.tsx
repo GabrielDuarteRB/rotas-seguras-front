@@ -64,109 +64,133 @@ export default function AdminViaturasPage() {
   };
 
   return (
-    <div className="bg-gray-900 text-white p-8 rounded-xl shadow-xl max-w-6xl mx-auto">
-      <h1 className="text-3xl font-bold mb-8 text-center">Gerenciar Viaturas</h1>
+    <div className="container">
+      {/* Header */}
+      <div className="mb-8">
+        <h1 className="text-3xl font-bold text-primary mb-2">Gerenciamento de Viaturas</h1>
+        <p className="text-secondary text-lg">Cadastre e gerencie as viaturas da corporação</p>
+      </div>
 
-      <form
-        onSubmit={handleSubmit}
-        className="grid grid-cols-1 md:grid-cols-5 gap-4 mb-10 items-end"
-      >
-        <div className="flex flex-col">
-          <label className="mb-1 text-sm font-medium text-white">Placa</label>
-          <input
-            type="text"
-            value={placa}
-            onChange={(e: ChangeEvent<HTMLInputElement>) => setPlaca(e.target.value)}
-            className="p-2 border border-gray-600 rounded bg-white/90 text-black"
-            required
-          />
-        </div>
-        <div className="flex flex-col">
-          <label className="mb-1 text-sm font-medium text-white">Modelo</label>
-          <input
-            type="text"
-            value={modelo}
-            onChange={(e: ChangeEvent<HTMLInputElement>) => setModelo(e.target.value)}
-            className="p-2 border border-gray-600 rounded bg-white/90 text-black"
-            required
-          />
-        </div>
-        <div className="flex flex-col">
-          <label className="mb-1 text-sm font-medium text-white">Ano</label>
-          <input
-            type="number"
-            value={ano}
-            onChange={(e: ChangeEvent<HTMLInputElement>) => setAno(Number(e.target.value))}
-            className="p-2 border border-gray-600 rounded bg-white/90 text-black"
-            required
-          />
-        </div>
-        <div className="flex flex-col">
-          <label className="mb-1 text-sm font-medium text-white">Status</label>
-          <select
-            value={idStatusViatura}
-            onChange={(e: ChangeEvent<HTMLSelectElement>) =>
-              setIdStatusViatura(Number(e.target.value))
-            }
-            className="p-2 border border-gray-600 rounded bg-white/90 text-black"
-            required
+      {/* Card de Criação */}
+      <div className="rounded-xl border border-gray-700 p-6 mb-8 hover-lift card-gradient">
+        <h2 className="text-xl font-semibold text-white mb-6 flex items-center gap-2">
+          <span className="w-2 h-6 bg-primary rounded-full"></span>
+          {editandoId ? 'Editar Viatura' : 'Cadastrar Nova Viatura'}
+        </h2>
+
+        <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-5 gap-4 items-end">
+          <div className="flex flex-col">
+            <label className="mb-1 text-sm font-medium text-white">Placa</label>
+            <input
+              type="text"
+              value={placa}
+              onChange={(e: ChangeEvent<HTMLInputElement>) => setPlaca(e.target.value)}
+              className="w-full px-4 py-3 bg-zinc-800 border border-gray-600 rounded-lg text-white focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+              required
+            />
+          </div>
+          <div className="flex flex-col">
+            <label className="mb-1 text-sm font-medium text-white">Modelo</label>
+            <input
+              type="text"
+              value={modelo}
+              onChange={(e: ChangeEvent<HTMLInputElement>) => setModelo(e.target.value)}
+              className="w-full px-4 py-3 bg-zinc-800 border border-gray-600 rounded-lg text-white focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+              required
+            />
+          </div>
+          <div className="flex flex-col">
+            <label className="mb-1 text-sm font-medium text-white">Ano</label>
+            <input
+              type="number"
+              value={ano}
+              onChange={(e: ChangeEvent<HTMLInputElement>) => setAno(Number(e.target.value))}
+              className="w-full px-4 py-3 bg-zinc-800 border border-gray-600 rounded-lg text-white focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+              required
+            />
+          </div>
+          <div className="flex flex-col">
+            <label className="mb-1 text-sm font-medium text-white">Status</label>
+            <select
+              value={idStatusViatura}
+              onChange={(e: ChangeEvent<HTMLSelectElement>) =>
+                setIdStatusViatura(Number(e.target.value))
+              }
+              className="w-full px-4 py-3 bg-zinc-800 border border-gray-600 rounded-lg text-white focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+              required
+            >
+              <option value="">Selecione</option>
+              {statusList.map((status) => (
+                <option key={status.id_status_viatura} value={status.id_status_viatura}>
+                  {status.descricao}
+                </option>
+              ))}
+            </select>
+          </div>
+          <button
+            type="submit"
+            className="bg-primary text-white px-6 py-3 rounded-lg font-medium hover:bg-primary/90 transition-all duration-200 transform hover:scale-105"
           >
-            <option value="">Selecione</option>
-            {statusList.map((status) => (
-              <option key={status.id_status_viatura} value={status.id_status_viatura}>
-                {status.descricao}
-              </option>
-            ))}
-          </select>
-        </div>
-        <button
-          type="submit"
-          className="bg-teal-600 text-white p-2 rounded hover:bg-teal-700 transition"
-        >
-          {editandoId ? 'Atualizar' : 'Cadastrar'}
-        </button>
-      </form>
+            {editandoId ? 'Atualizar' : 'Cadastrar'}
+          </button>
+        </form>
+      </div>
 
-      <div className="overflow-x-auto">
-        <table className="w-full border-collapse text-sm text-center rounded overflow-hidden">
-          <thead className="bg-gray-800 text-white uppercase">
-            <tr>
-              <th className="px-4 py-2 border border-gray-700">ID</th>
-              <th className="px-4 py-2 border border-gray-700">Placa</th>
-              <th className="px-4 py-2 border border-gray-700">Modelo</th>
-              <th className="px-4 py-2 border border-gray-700">Ano</th>
-              <th className="px-4 py-2 border border-gray-700">Status</th>
-              <th className="px-4 py-2 border border-gray-700">Ações</th>
-            </tr>
-          </thead>
-          <tbody>
-            {viaturas.map((viatura) => (
-              <tr key={viatura.id_viatura} className="bg-gray-900 hover:bg-gray-800 transition">
-                <td className="px-4 py-2 border border-gray-800">{viatura.id_viatura}</td>
-                <td className="px-4 py-2 border border-gray-800">{viatura.placa}</td>
-                <td className="px-4 py-2 border border-gray-800">{viatura.modelo}</td>
-                <td className="px-4 py-2 border border-gray-800">{viatura.ano}</td>
-                <td className="px-4 py-2 border border-gray-800">{viatura.status_viatura?.descricao}</td>
-                <td className="px-4 py-2 border border-gray-800 flex justify-center gap-4">
-                  <button
-                    onClick={() => handleEdit(viatura)}
-                    className="text-blue-400 hover:text-blue-600"
-                    title="Editar"
-                  >
-                    <FaEdit />
-                  </button>
-                  <button
-                    onClick={() => ViaturaService.delete(viatura.id_viatura).then(fetchData)}
-                    className="text-red-500 hover:text-red-700"
-                    title="Remover"
-                  >
-                    <FaTrash />
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      {/* Lista de Viaturas */}
+      <div className="rounded-xl border border-gray-700 p-6 hover-lift card-gradient">
+        <div className="flex justify-between items-center mb-6">
+          <h2 className="text-xl font-semibold text-white flex items-center gap-2">
+            <span className="w-2 h-6 bg-primary rounded-full"></span>
+            Viaturas Cadastradas
+          </h2>
+          <span className="bg-primary/20 text-primary px-4 py-2 rounded-full text-sm font-medium border border-primary/30">
+            {viaturas.length} viatura{viaturas.length !== 1 ? 's' : ''} cadastrada{viaturas.length !== 1 ? 's' : ''}
+          </span>
+        </div>
+
+        <div className="overflow-x-auto">
+          <div className="min-w-[600px] md:min-w-[900px] rounded-xl border border-gray-700 bg-black/20">
+            <table className="w-full text-base text-left rounded-xl overflow-hidden">
+              <thead className="bg-zinc-800 text-white uppercase text-xs md:text-sm">
+                <tr>
+                  <th className="px-3 py-2 md:px-6 md:py-4">ID</th>
+                  <th className="px-3 py-2 md:px-6 md:py-4">Placa</th>
+                  <th className="px-3 py-2 md:px-6 md:py-4">Modelo</th>
+                  <th className="px-3 py-2 md:px-6 md:py-4">Ano</th>
+                  <th className="px-3 py-2 md:px-6 md:py-4">Status</th>
+                  <th className="px-3 py-2 md:px-6 md:py-4 text-center">Ações</th>
+                </tr>
+              </thead>
+              <tbody>
+                {viaturas.map((viatura) => (
+                  <tr key={viatura.id_viatura} className="border-b border-gray-700 hover:bg-zinc-800/50 transition-colors">
+                    <td className="px-3 py-2 md:px-6 md:py-4 text-white">{viatura.id_viatura}</td>
+                    <td className="px-3 py-2 md:px-6 md:py-4 text-white">{viatura.placa}</td>
+                    <td className="px-3 py-2 md:px-6 md:py-4 text-white">{viatura.modelo}</td>
+                    <td className="px-3 py-2 md:px-6 md:py-4 text-white">{viatura.ano}</td>
+                    <td className="px-3 py-2 md:px-6 md:py-4 text-white">{viatura.status_viatura?.descricao}</td>
+                    <td className="px-3 py-2 md:px-6 md:py-4 flex justify-center gap-4">
+                      <button
+                        onClick={() => handleEdit(viatura)}
+                        className="text-primary hover:text-primary/80 transition-colors"
+                        title="Editar"
+                      >
+                        <FaEdit />
+                      </button>
+                      <button
+                        onClick={() => ViaturaService.delete(viatura.id_viatura).then(fetchData)}
+                        className="text-error hover:text-error/80 transition-colors"
+                        title="Remover"
+                      >
+                        <FaTrash />
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     </div>
   );

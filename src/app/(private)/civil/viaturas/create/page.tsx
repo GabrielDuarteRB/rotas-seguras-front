@@ -57,60 +57,72 @@ export default function CreateViaturaPage() {
   }
 
   return (
-    <div className="p-6 max-w-2xl mx-auto">
+    <div className="container">
       <div className="flex items-center gap-2 mb-6 text-primary cursor-pointer hover:underline" onClick={() => router.back()}>
         <FaArrowLeft />
         <span>Voltar</span>
       </div>
 
-      <h1 className="text-3xl font-bold text-center text-primary mb-8">Cadastrar Nova Viatura</h1>
+      {/* Header */}
+      <div className="mb-8">
+        <h1 className="text-3xl font-bold text-primary mb-2">Cadastrar Nova Viatura</h1>
+        <p className="text-secondary text-lg">Preencha os dados da nova viatura</p>
+      </div>
 
-      <form onSubmit={handleSubmit} className="space-y-6 bg-white p-6 shadow-lg rounded-2xl">
-        <InputText
-          label="Placa"
-          name="placa"
-          value={form.placa}
-          onChange={handleChange}
-          required
-        />
+      {/* Card de Criação */}
+      <div className="rounded-xl border border-gray-700 p-6 hover-lift card-gradient">
+        <h2 className="text-xl font-semibold text-white mb-6 flex items-center gap-2">
+          <span className="w-2 h-6 bg-primary rounded-full"></span>
+          Dados da Viatura
+        </h2>
 
-        <InputText
-          label="Modelo"
-          name="modelo"
-          value={form.modelo}
-          onChange={handleChange}
-          required
-        />
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <InputText
+            label="Placa"
+            name="placa"
+            value={form.placa}
+            onChange={handleChange}
+            required
+          />
 
-        <InputText
-          label="Ano"
-          name="ano"
-          value={form.ano}
-          onChange={handleChange}
-          type="number"
-          required
-        />
+          <InputText
+            label="Modelo"
+            name="modelo"
+            value={form.modelo}
+            onChange={handleChange}
+            required
+          />
 
-        <InputSelect
-          label="Status da Viatura"
-          name="id_status_viatura"
-          value={form.id_status_viatura}
-          onChange={handleChange}
-          options={
-            Array.isArray(statusList)
-              ? statusList.map((status) => ({
-                  label: status.descricao,
-                  value: String(status.id_status_viatura),
-                }))
-              : []
-          }
-          required
-        />
+          <InputText
+            label="Ano"
+            name="ano"
+            value={form.ano}
+            onChange={handleChange}
+            type="number"
+            required
+          />
 
-        <div className="flex justify-end">
-          <ButtonPrimary type="submit">Cadastrar</ButtonPrimary>
-        </div>
-      </form>
+          <InputSelect
+            label="Status da Viatura"
+            name="id_status_viatura"
+            value={form.id_status_viatura}
+            onChange={handleChange}
+            options={
+              Array.isArray(statusList)
+                ? statusList.map((status) => ({
+                    label: status.descricao,
+                    value: String(status.id_status_viatura),
+                  }))
+                : []
+            }
+            required
+          />
+
+          <div className="flex justify-end">
+            <ButtonPrimary type="submit">Cadastrar</ButtonPrimary>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }

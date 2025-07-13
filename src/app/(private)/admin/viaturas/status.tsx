@@ -48,55 +48,94 @@ export default function StatusViaturaAdminPage() {
   };
 
   return (
-    <div className="p-6 max-w-4xl mx-auto">
-      <h1 className="text-3xl font-bold text-center text-primary mb-6">
-        Gerenciar Status de Viatura
-      </h1>
+    <div className="container">
+      {/* Header */}
+      <div className="mb-8">
+        <h1 className="text-3xl font-bold text-primary mb-2">Gerenciamento de Status de Viatura</h1>
+        <p className="text-secondary text-lg">Configure os status disponíveis para as viaturas</p>
+      </div>
 
-      <form onSubmit={handleSubmit} className="flex gap-4 mb-6 bg-white p-4 rounded-lg shadow">
-        <InputText
-          label="Descrição do Status"
-          name="descricao"
-          value={descricao}
-          onChange={(e) => setDescricao(e.target.value)}
-          required
-        />
-        <div className="flex items-end">
-          <ButtonPrimary type="submit">{editandoId !== null ? "Atualizar" : "Cadastrar"}</ButtonPrimary>
+      {/* Card de Criação */}
+      <div className="rounded-xl border border-gray-700 p-6 mb-8 hover-lift card-gradient">
+        <h2 className="text-xl font-semibold text-white mb-6 flex items-center gap-2">
+          <span className="w-2 h-6 bg-primary rounded-full"></span>
+          {editandoId !== null ? 'Editar Status' : 'Cadastrar Novo Status'}
+        </h2>
+
+        <form onSubmit={handleSubmit} className="flex gap-4 items-end">
+          <div className="flex-1">
+            <InputText
+              label="Descrição do Status"
+              name="descricao"
+              value={descricao}
+              onChange={(e) => setDescricao(e.target.value)}
+              required
+            />
+          </div>
+          <div className="flex items-end">
+            <ButtonPrimary type="submit">
+              {editandoId !== null ? "Atualizar" : "Cadastrar"}
+            </ButtonPrimary>
+          </div>
+        </form>
+      </div>
+
+      {/* Lista de Status */}
+      <div className="rounded-xl border border-gray-700 p-6 hover-lift card-gradient">
+        <div className="flex justify-between items-center mb-6">
+          <h2 className="text-xl font-semibold text-white flex items-center gap-2">
+            <span className="w-2 h-6 bg-primary rounded-full"></span>
+            Status Cadastrados
+          </h2>
+          <span className="bg-primary/20 text-primary px-4 py-2 rounded-full text-sm font-medium border border-primary/30">
+            {statusList.length} status cadastrado{statusList.length !== 1 ? 's' : ''}
+          </span>
         </div>
-      </form>
 
-      <div className="overflow-x-auto bg-white rounded-lg shadow">
-        <table className="min-w-full table-auto">
-          <thead>
-            <tr className="bg-gray-100">
-              <th className="px-4 py-2">ID</th>
-              <th className="px-4 py-2">Descrição</th>
-              <th className="px-4 py-2">Ações</th>
-            </tr>
-          </thead>
-          <tbody>
-            {statusList.map((s: any) => (
-              <tr key={s.id_status_viatura} className="border-t">
-                <td className="px-4 py-2">{s.id_status_viatura}</td>
-                <td className="px-4 py-2">{s.descricao}</td>
-                <td className="px-4 py-2 space-x-2">
-                  <button onClick={() => handleEdit(s.id_status_viatura, s.descricao)} className="text-blue-600 hover:underline">
-                    Editar
-                  </button>
-                  <button onClick={() => handleDelete(s.id_status_viatura)} className="text-red-600 hover:underline">
-                    Remover
-                  </button>
-                </td>
-              </tr>
-            ))}
-            {statusList.length === 0 && (
-              <tr>
-                <td colSpan={3} className="text-center p-4 text-gray-500">Nenhum status cadastrado</td>
-              </tr>
-            )}
-          </tbody>
-        </table>
+        <div className="overflow-x-auto">
+          <div className="min-w-[600px] rounded-xl border border-gray-700 bg-black/20">
+            <table className="w-full text-base text-left rounded-xl overflow-hidden">
+              <thead className="bg-zinc-800 text-white uppercase text-xs md:text-sm">
+                <tr>
+                  <th className="px-3 py-2 md:px-6 md:py-4">ID</th>
+                  <th className="px-3 py-2 md:px-6 md:py-4">Descrição</th>
+                  <th className="px-3 py-2 md:px-6 md:py-4 text-center">Ações</th>
+                </tr>
+              </thead>
+              <tbody>
+                {statusList.map((s: any) => (
+                  <tr key={s.id_status_viatura} className="border-b border-gray-700 hover:bg-zinc-800/50 transition-colors">
+                    <td className="px-3 py-2 md:px-6 md:py-4 text-white">{s.id_status_viatura}</td>
+                    <td className="px-3 py-2 md:px-6 md:py-4 text-white">{s.descricao}</td>
+                    <td className="px-3 py-2 md:px-6 md:py-4 flex justify-center gap-4">
+                      <button 
+                        onClick={() => handleEdit(s.id_status_viatura, s.descricao)} 
+                        className="text-primary hover:text-primary/80 transition-colors"
+                      >
+                        Editar
+                      </button>
+                      <button 
+                        onClick={() => handleDelete(s.id_status_viatura)} 
+                        className="text-error hover:text-error/80 transition-colors"
+                      >
+                        Remover
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+                {statusList.length === 0 && (
+                  <tr>
+                    <td colSpan={3} className="text-center p-8 text-zinc-400">
+                      <div className="text-6xl mb-4">📋</div>
+                      <p className="text-lg">Nenhum status cadastrado ainda.</p>
+                      <p className="text-sm mt-2">Crie o primeiro status usando o formulário acima!</p>
+                    </td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     </div>
   );
