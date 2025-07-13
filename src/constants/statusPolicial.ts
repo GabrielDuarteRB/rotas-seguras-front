@@ -1,4 +1,6 @@
-export default [
-  { label: 'Ativo', value: "1" },
-  { label: 'Não Ativo', value: "2" }
-]
+const statusPolicial = [
+  { label: 'Ativo', value: '1' },
+  { label: 'Não Ativo', value: '0' },
+];
+
+export default statusPolicial;

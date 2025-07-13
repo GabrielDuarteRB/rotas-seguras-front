@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useContext } from "react";
-import { FaExclamationTriangle , FaHome, FaShareAlt, FaBars, FaTimes, FaSignOutAlt, FaCarSide } from "react-icons/fa";
+import { FaExclamationTriangle , FaHome, FaShareAlt, FaBars, FaTimes, FaSignOutAlt, FaCarSide, FaEye, FaArtstation} from "react-icons/fa";
 import { BiSolidCarWash } from "react-icons/bi";
 import { LiaCarAltSolid } from "react-icons/lia";
 import { BsFillFlagFill } from "react-icons/bs";
@@ -23,7 +23,9 @@ const navOptions = {
     { id: 3, label: "Viaturas", href: '/admin/viaturas', icon: <FaCarSide /> },
     { id: 4, label: "Status Viatura", href: '/admin/status', icon: <BiSolidCarWash /> },
     { id: 5, label: "Posto de guarda", href: '/admin/posto', icon: <BsFillFlagFill /> },
-    { id: 6, label: "Policial Viatura", href: '/admin/policial-viatura', icon: <LiaCarAltSolid  /> }
+    { id: 6, label: "Policial Viatura", href: '/admin/policial-viatura', icon: <LiaCarAltSolid  /> },
+    { id: 7, label: "Policial", href: '/admin/policial', icon: <FaEye/>},
+    { id: 8, label: "Posto Policial", href: '/admin/posto-policial', icon: <FaArtstation/>}
   ],
   policial: [
     { id: 1, label: "Home", href: '/policial', icon: <FaHome  /> },

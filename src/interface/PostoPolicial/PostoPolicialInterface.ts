@@ -1,4 +1,4 @@
 export interface PostoPolicialInterface {
-    id_postopolicial: number;
+    id_posto: number;
     posto: string
 }
