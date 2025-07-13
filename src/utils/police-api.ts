@@ -25,8 +25,10 @@ export async function policeApi<T>(
 
     if (token) {
       headers['Authorization'] = `Bearer ${token}`;
-    } else if (options.redirectOnUnauthorized !== false) {
-      return Promise.reject('Unauthorized');
+    } else {
+      if (options.redirectOnUnauthorized !== false) {
+        return Promise.reject('Unauthorized');
+      }
     }
   }
 

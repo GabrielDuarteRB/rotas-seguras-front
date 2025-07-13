@@ -18,7 +18,9 @@ const navOptions = {
     { id: 1, label: "Home", href: '/admin', icon: <FaHome  /> },
     { id: 2, label: "Ocorrencias", href: '/admin/ocorrencia', icon: <FaExclamationTriangle  /> },
     { id: 3, label: "Viaturas", href: '/admin/viaturas', icon: <FaCarSide /> },
-    { id: 4, label: "Status Viatura", href: '/admin/status', icon: <FaCarSide /> }
+    { id: 4, label: "Status Viatura", href: '/admin/status', icon: <FaCarSide /> },
+    { id: 5, label: "Posto de guarda", href: '/admin/posto', icon: <FaShareAlt  /> },
+    { id: 6, label: "Policial Viatura", href: '/admin/policial-viatura', icon: <FaHome /> }
   ],
   policial: [
     { id: 1, label: "Home", href: '/policial', icon: <FaHome  /> },
