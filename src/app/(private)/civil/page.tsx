@@ -4,11 +4,7 @@ import { useContext } from 'react'
 import { AuthContext } from '@/context/AuthContext'
 import { CardOption } from '@/components/Card/Option'
 
-export default function PrivateCivil({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function PrivateCivil() {
   const authContext = useContext(AuthContext)
 
   if(!authContext) return null
