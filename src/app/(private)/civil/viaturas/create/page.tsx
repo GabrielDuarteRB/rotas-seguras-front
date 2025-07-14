@@ -66,7 +66,7 @@ export default function CreateViaturaPage() {
       
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-primary mb-2">Cadastrar Nova Viatura</h1>
-        <p className="text-secondary text-lg">Preencha os dados da nova viatura</p>
+        <p className="text-zinc-300 text-lg">Preencha os dados da nova viatura</p>
       </div>
 
       

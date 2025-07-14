@@ -146,7 +146,7 @@ export default function MapaPostoPage() {
       
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-primary mb-2">Gerenciamento de Postos</h1>
-        <p className="text-secondary text-lg">Cadastre e visualize postos de policiamento no mapa</p>
+        <p className="text-zinc-300 text-lg">Cadastre e visualize postos de policiamento no mapa</p>
       </div>
 
       

@@ -52,7 +52,7 @@ export default function StatusViaturaAdminPage() {
       
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-primary mb-2">Gerenciamento de Status de Viatura</h1>
-        <p className="text-secondary text-lg">Configure os status disponíveis para as viaturas</p>
+        <p className="text-zinc-300 text-lg">Configure os status disponíveis para as viaturas</p>
       </div>
 
       

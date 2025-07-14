@@ -8,7 +8,7 @@ export default function AdminHomePage() {
       
       <div className="mb-8 text-center">
         <h1 className="text-3xl font-bold text-primary mb-2">Bem-vindo, Administrador</h1>
-        <p className="text-secondary text-lg">Gerencie usuários, ocorrências e viaturas com acesso total ao sistema.</p>
+        <p className="text-zinc-300 text-lg">Gerencie usuários, ocorrências e viaturas com acesso total ao sistema.</p>
       </div>
 
       
