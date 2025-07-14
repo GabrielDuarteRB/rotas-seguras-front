@@ -28,7 +28,7 @@ export default function ViaturaListPage() {
       
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-primary mb-2">Viaturas</h1>
-        <p className="text-secondary text-lg">Visualize as viaturas disponíveis</p>
+        <p className="text-zinc-300 text-lg">Visualize as viaturas disponíveis</p>
       </div>
 
       

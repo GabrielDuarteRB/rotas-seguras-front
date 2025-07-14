@@ -12,13 +12,19 @@ export default function PrivateCivil() {
   const { user, loading } = authContext
 
   return (
-    <div>
-      <h1 className="text-primary text-2xl font-bold">Bem vindo a rotas seguras, {user?.nome}!</h1>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-16 justify-items-center">
+    <div className="container">
+      
+      <div className="mb-8 text-center">
+        <h1 className="text-3xl font-bold text-primary mb-2">Bem-vindo às Rotas Seguras, {user?.nome}!</h1>
+        <p className="text-zinc-300 text-lg">Acesse as funcionalidades disponíveis para civis no sistema de segurança.</p>
+      </div>
+
+      
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 auto-rows-fr">
         <CardOption
-          title="Ocorrencias"
-          paragraph="Caso tenha acontecido algo com voce, crie uma ocorrencia para podermos ajudar o mais rapido possivel"
-          buttonText="Ocorrencias"
+          title="Ocorrências"
+          paragraph="Caso tenha acontecido algo com você, crie uma ocorrência para podermos ajudar o mais rápido possível"
+          buttonText="Ocorrências"
           buttonLink="/civil/ocorrencia"
         />
         <CardOption
@@ -38,6 +44,12 @@ export default function PrivateCivil() {
           paragraph="Visualize os postos policiais cadastrados no sistema."
           buttonText="Postos Policiais"
           buttonLink="/civil/posto-policial"
+        />
+        <CardOption
+          title="Viaturas"
+          paragraph="Visualize as viaturas disponíveis no sistema."
+          buttonText="Viaturas"
+          buttonLink="/civil/viaturas"
         />
       </div>
     </div>

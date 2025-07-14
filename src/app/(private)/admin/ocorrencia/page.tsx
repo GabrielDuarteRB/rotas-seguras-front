@@ -33,28 +33,37 @@ export default function PrivateAdminOcorrencia() {
   }
 
   return (
-    <div className="flex flex-col p-6">
-      <h1 className="text-primary text-2xl font-bold">Ocorrências</h1>
-      <p className="text-primary text-lg font-medium mt-4">
-        {!ocorrencias || ocorrencias.length === 0
-          ? 'Nenhuma ocorrência encontrada. Crie a primeira!'
-          : `${ocorrencias.length} encontradas`}
-      </p>
-
-      <div className="mt-6 w-fit">
-        <ButtonPrimary onClick={() => setModalOpen(true)}>
-          Criar Ocorrência
-        </ButtonPrimary>
+    <div className="container">
+      
+      <div className="mb-8">
+        <h1 className="text-3xl font-bold text-primary mb-2">Ocorrências</h1>
+        <p className="text-zinc-300 text-lg">
+          {!ocorrencias || ocorrencias.length === 0
+            ? 'Nenhuma ocorrência encontrada. Crie a primeira!'
+            : `${ocorrencias.length} ocorrência${ocorrencias.length !== 1 ? 's' : ''} encontrada${ocorrencias.length !== 1 ? 's' : ''}`}
+        </p>
       </div>
 
-      <div className="mt-10">
-        {ocorrencias && ocorrencias.length > 0 && (
-          <TableOcorrencia
-            ocorrencias={ocorrencias}
-            isAdmin={true}
-            onOcorrenciaClick={handleAbrirEdicao}
-          />
-        )}
+      <div className="rounded-xl border border-gray-700 p-6 mb-8 hover-lift card-gradient">
+        <div className="flex justify-between items-center mb-6">
+          <h2 className="text-xl font-semibold text-white flex items-center gap-2">
+            <span className="w-2 h-6 bg-primary rounded-full"></span>
+            Gerenciamento de Ocorrências
+          </h2>
+          <ButtonPrimary onClick={() => setModalOpen(true)}>
+            Criar Ocorrência
+          </ButtonPrimary>
+        </div>
+
+        <div className="mt-6">
+          {ocorrencias && ocorrencias.length > 0 && (
+            <TableOcorrencia
+              ocorrencias={ocorrencias}
+              isAdmin={true}
+              onOcorrenciaClick={handleAbrirEdicao}
+            />
+          )}
+        </div>
       </div>
 
       {user?.id && (

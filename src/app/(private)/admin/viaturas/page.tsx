@@ -68,7 +68,7 @@ export default function AdminViaturasPage() {
       
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-primary mb-2">Gerenciamento de Viaturas</h1>
-        <p className="text-secondary text-lg">Cadastre e gerencie as viaturas da corporação</p>
+        <p className="text-zinc-300 text-lg">Cadastre e gerencie as viaturas da corporação</p>
       </div>
 
       

@@ -4,14 +4,19 @@ import { CardOption } from '@/components/Card/Option'
 
 export default function PolicialHomePage() {
   return (
-    <div className="p-6 text-center">
-      <h1 className="text-3xl font-bold text-primary">Bem-vindo, Policial</h1>
-      <p className="mt-4 text-gray-600">Visualize e acompanhe ocorrências e viaturas atribuídas à sua região.</p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-16 justify-items-center">
+    <div className="container">
+      
+      <div className="mb-8 text-center">
+        <h1 className="text-3xl font-bold text-primary mb-2">Bem-vindo, Policial</h1>
+        <p className="text-zinc-300 text-lg">Visualize e acompanhe ocorrências e viaturas atribuídas à sua região.</p>
+      </div>
+
+      
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 auto-rows-fr">
         <CardOption
-          title="Ocorrencias"
-          paragraph="Caso tenha acontecido algo com voce, crie uma ocorrencia para podermos ajudar o mais rapido possivel"
-          buttonText="Ocorrencias"
+          title="Ocorrências"
+          paragraph="Caso tenha acontecido algo com você, crie uma ocorrência para podermos ajudar o mais rápido possível"
+          buttonText="Ocorrências"
           buttonLink="/policial/ocorrencia"
         />
         <CardOption
